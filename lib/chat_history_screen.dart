@@ -12,25 +12,36 @@ class ChatHistoryScreen extends StatefulWidget {
 class _ChatHistoryScreenState extends State<ChatHistoryScreen> {
   final TextEditingController _searchController = TextEditingController();
   
-  // Base data
+  // // Base data
+  // List<Map<String, dynamic>> get _allServiceChats => [
+  //     ...ServiceManager().doctors.take(2).map((d) => {
+  //       'name': d.name, 
+  //       'image': d.image, 
+  //       'msg': 'See you then!', 
+  //       'time': '10:30 AM',
+  //       'type': 'doctor',
+  //       'id': d.id
+  //     }),
+  //     ...ServiceManager().shops.take(1).map((s) => {
+  //       'name': s.name, 
+  //       'image': s.image, 
+  //       'msg': 'Your order is ready.', 
+  //       'time': 'Yesterday',
+  //       'type': 'shop',
+  //       'id': s.id
+  //     }),
+  // ];
   List<Map<String, dynamic>> get _allServiceChats => [
-      ...ServiceManager().doctors.take(2).map((d) => {
-        'name': d.name, 
-        'image': d.image, 
-        'msg': 'See you then!', 
-        'time': '10:30 AM',
-        'type': 'doctor',
-        'id': d.id
-      }),
-      ...ServiceManager().shops.take(1).map((s) => {
-        'name': s.name, 
-        'image': s.image, 
-        'msg': 'Your order is ready.', 
-        'time': 'Yesterday',
-        'type': 'shop',
-        'id': s.id
-      }),
-  ];
+  ...ServiceManager().doctors.take(2).map((d) => {
+    'name': d.name,
+    'image': d.image,
+    'msg': 'See you then!',
+    'time': '10:30 AM',
+    'type': 'doctor',
+    'id': d.id
+  }),
+];
+
 
   final List<Map<String, dynamic>> _allFriendChats = [
     {'name': 'Pet Lover', 'image': 'https://i.pravatar.cc/150?img=3', 'msg': 'Your dog is so cute!', 'time': 'Now', 'type': 'friend', 'id': ''},

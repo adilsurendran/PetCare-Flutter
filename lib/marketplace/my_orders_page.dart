@@ -100,7 +100,6 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'package:petcareapp/login.dart';
 import 'package:petcareapp/register.dart';
 

@@ -12,6 +12,8 @@ class LoginPage extends StatefulWidget {
   String? lid;
 
   String? usrid;
+  String? userFullname;
+  String role = "user";
 class _LoginPageState extends State<LoginPage> {
   
 
@@ -31,7 +33,7 @@ Future<void> Loginapi(BuildContext context) async {
       },
     );
 
-    print(response.data);
+    // print(response.data);
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       final responseData = response.data['data'];
@@ -46,9 +48,12 @@ Future<void> Loginapi(BuildContext context) async {
 
       lid = responseData['id'];
       usrid = responseData['userDetails']['_id'];
+      userFullname = responseData['userDetails']['userFullname'];
 
-      print(lid);
+      // print(lid);
       print(usrid);
+      print(userFullname);
+      print(role);
 
       Navigator.pushReplacement(
         context,

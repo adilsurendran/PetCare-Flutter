@@ -273,18 +273,18 @@ print(response.data);
 
   /* ================= OTHERS (UNCHANGED) ================= */
 
-  final List<PetShop> _shops = [
-    PetShop(
-      id: "s1",
-      name: "AKB Pet Shop",
-      location: "Ramanattukara",
-      image:
-          "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd",
-      rating: 4.3,
-      description: "Everything your pet needs.",
-      products: ["Pedigree", "Whiskas"],
-    ),
-  ];
+  // final List<PetShop> _shops = [
+  //   PetShop(
+  //     id: "s1",
+  //     name: "AKB Pet Shop",
+  //     location: "Ramanattukara",
+  //     image:
+  //         "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd",
+  //     rating: 4.3,
+  //     description: "Everything your pet needs.",
+  //     products: ["Pedigree", "Whiskas"],
+  //   ),
+  // ];
 
   final List<ServiceProvider> _groomers = [
     ServiceProvider(
@@ -330,7 +330,7 @@ print(response.data);
 
   List<Doctor> get doctors => _doctors;
   List<Doctor> get vets => _vets;
-  List<PetShop> get shops => _shops;
+  // List<PetShop> get shops => _shops;
   List<ServiceProvider> get groomers => _groomers;
   List<ServiceProvider> get trainers => _trainers;
   List<ServiceProvider> get parks => _parks;

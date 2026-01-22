@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:petcareapp/community.dart';
+import 'package:petcareapp/community_home_page.dart';
+import 'package:petcareapp/community_tab.dart';
 import 'package:petcareapp/doctordetails.dart';
 import 'package:petcareapp/groomers.dart';
+import 'package:petcareapp/guide.dart';
+import 'package:petcareapp/my_pets_for_sale.dart';
 import 'package:petcareapp/petparks.dart';
 import 'package:petcareapp/petprofile.dart';
 import 'package:petcareapp/profilemanagement.dart';
@@ -13,7 +17,6 @@ import 'package:petcareapp/viewshop.dart';
 import 'package:petcareapp/chat_history_screen.dart';
 import 'package:petcareapp/marketplace/buy_pets_page.dart';
 import 'package:petcareapp/marketplace/buy_products_page.dart';
-import 'package:petcareapp/notification_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,8 +33,11 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     const HomeContent(),
-    const VideoPostPage(),
-    const ChatHistoryScreen(),
+    // const VideoPostPage(),
+    // const CommunityTab(),
+    CommunityHomePage(),
+    // const ChatHistoryScreen(),
+    const GuidePage(),
     const ProfileManagement(),
   ];
 
@@ -98,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "Home"),
                 BottomNavigationBarItem(icon: Icon(Icons.people_alt_rounded), label: "Community"),
-                BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_rounded), label: "Chats"),
+                BottomNavigationBarItem(icon: Icon(Icons.video_chat_rounded), label: "Guides"),
                 BottomNavigationBarItem(icon: Icon(Icons.person_rounded), label: "Profile"),
               ],
             ),
@@ -147,9 +153,19 @@ class _HomeContentState extends State<HomeContent> {
         actions: [
 
           IconButton(
-            icon: const Icon(Icons.notifications_outlined, color: Colors.grey, size: 28),
+            icon: const Icon(Icons.pets, color: Colors.grey, size: 28),
             onPressed: () {
-               Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationScreen()));
+              //  Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationScreen()));
+//               Navigator.push(
+//   context,
+//   MaterialPageRoute(builder: (_) => const AddPetForSale()),
+// );
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (_) => const MyPetsForSale()),
+);
+
+
             },
           )
         ],
