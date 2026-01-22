@@ -6,6 +6,7 @@ import 'package:petcareapp/community_tab.dart';
 import 'package:petcareapp/doctordetails.dart';
 import 'package:petcareapp/groomers.dart';
 import 'package:petcareapp/guide.dart';
+import 'package:petcareapp/my_complaints_page.dart';
 import 'package:petcareapp/my_pets_for_sale.dart';
 import 'package:petcareapp/petparks.dart';
 import 'package:petcareapp/petprofile.dart';
@@ -288,14 +289,15 @@ Navigator.push(
                     "https://images.unsplash.com/photo-1537368910025-700350fe46c7",() => Navigator.push(context,MaterialPageRoute(builder:(context) => const Doctordetails(isVet: false),)),),
                 serviceCard("Pet Shops", Icons.store_mall_directory_rounded,
                     "https://images.unsplash.com/photo-1583337130417-3346a1be7dee",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Viewshop(),)),),
-                serviceCard("Groomers", Icons.content_cut_rounded,
-                    "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Viewgroomers(),)),),
-                serviceCard("Trainers", Icons.sports_kabaddi_rounded, // or fitness
-                    "https://images.unsplash.com/photo-1587300003388-59208cc962cb",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Viewtrainers(),)),),
-                serviceCard("Vet Hospital", Icons.local_hospital_rounded,
-                    "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Doctordetails(isVet: true),)),),
-                serviceCard("Pet Parks", Icons.park_rounded,
-                    "https://images.unsplash.com/photo-1597633425046-08f5110420b5",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Viewpetparks(),)),),              ],
+                serviceCard("Complaints", Icons.message_rounded,
+                    "https://images.unsplash.com/photo-1521791136064-7986c2920216",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const MyComplaintsPage(),)),),
+                // serviceCard("Trainers", Icons.sports_kabaddi_rounded, // or fitness
+                //     "https://images.unsplash.com/photo-1587300003388-59208cc962cb",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Viewtrainers(),)),),
+                // serviceCard("Vet Hospital", Icons.local_hospital_rounded,
+                //     "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Doctordetails(isVet: true),)),),
+                // serviceCard("Pet Parks", Icons.park_rounded,
+                //     "https://images.unsplash.com/photo-1597633425046-08f5110420b5",() => Navigator.push(context, MaterialPageRoute(builder:(context) => const Viewpetparks(),)),), 
+                     ],
             ),
 
 

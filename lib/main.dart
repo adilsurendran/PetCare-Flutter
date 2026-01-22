@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcareapp/login.dart';
+import 'package:petcareapp/send_complaint_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       home:LoginPage(),
+      routes: {
+        "/sendComplaint": (_) => const SendComplaintPage(),
+      },
       
     );
   }
