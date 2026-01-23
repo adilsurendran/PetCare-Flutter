@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
 import 'package:petcareapp/register.dart';
 

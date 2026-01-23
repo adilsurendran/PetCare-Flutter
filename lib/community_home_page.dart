@@ -27,6 +27,12 @@ class _CommunityHomePageState extends State<CommunityHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("PetCare Community"),
+        centerTitle: true,
+        foregroundColor: Color.fromARGB(250, 218, 98, 17),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255), // SAME AS PREVIOUS
+      ),
       body: _index == 0 ? const CommunityTab() : const CommunityAccountTab(),
 
       floatingActionButton: FloatingActionButton(

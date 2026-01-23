@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:petcareapp/api_config.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -10,8 +11,8 @@ class Register extends StatefulWidget {
 }
 
 // 🔹 Dio instance & base URL
-final Dio dio = Dio();
-const String baseUrl = 'http://192.168.1.72:5000';
+// final Dio dio = Dio();
+// const String baseUrl = 'http://192.168.1.72:5000';
 
 class _RegisterState extends State<Register> {
   // 🔹 Controllers

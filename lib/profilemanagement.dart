@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
 import 'package:petcareapp/register.dart';
 
@@ -115,17 +116,17 @@ class _ProfileManagementState extends State<ProfileManagement> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        leading: IconButton(
-          icon: const CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              color: Color.fromARGB(250, 218, 98, 17),
-              size: 20,
-            ),
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
+        // leading: IconButton(
+        //   icon: const CircleAvatar(
+        //     backgroundColor: Colors.white,
+        //     child: Icon(
+        //       Icons.arrow_back_ios_new,
+        //       color: Color.fromARGB(250, 218, 98, 17),
+        //       size: 20,
+        //     ),
+        //   ),
+        //   onPressed: () => Navigator.pop(context),
+        // ),
         title: const Text(
           'Profile',
           style: TextStyle(
