@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
-import 'package:petcareapp/register.dart';
-
-
 
 class ProfileManagement extends StatefulWidget {
   const ProfileManagement({super.key});
@@ -33,8 +30,9 @@ class _ProfileManagementState extends State<ProfileManagement> {
 
   // 🔹 PICK IMAGE (optional – UI only)
   Future<void> _pickImage() async {
-    final XFile? pickedFile =
-        await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
     if (pickedFile != null) {
       setState(() {
         _profileImage = File(pickedFile.path);
@@ -45,8 +43,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
   // 🔹 PROFILE API
   Future<void> profileApi() async {
     try {
-      final response =
-          await dio.get('$baseUrl/api/users/profile/$usrid');
+      final response = await dio.get('$baseUrl/api/users/profile/$usrid');
 
       final data = response.data;
 
@@ -58,7 +55,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
         picontroller.text = data['pincode'] ?? '';
         citycontroller.text = data['city'] ?? '';
         statecontroller.text = data['state'] ?? '';
-        agecontroller.text = data['age'] .toString();
+        agecontroller.text = data['age'].toString();
         isLoading = false;
       });
     } catch (e) {
@@ -74,18 +71,22 @@ class _ProfileManagementState extends State<ProfileManagement> {
   }
 
   Future<void> updateProfileApi() async {
+    print("Hiiiiiiiiii");
     try {
-      final response = await dio.put('$baseUrl/api/users/profile/$usrid', data: {
-        'userFullname':nameController.text.trim(),
-        'userEmail':emailController.text.trim(),
-        'city':citycontroller.text.trim(),
-        'state':statecontroller.text.trim(),
-        'pincode':picontroller.text.trim(),
-        'age':agecontroller.text.trim(),
-        'gender':genderController.text.trim(),
-        'phone':phoneController.text.trim()
-      });
-      print(response.data.message);
+      final response = await dio.put(
+        '$baseUrl/api/users/profile/$usrid',
+        data: {
+          'userFullname': nameController.text.trim(),
+          'userEmail': emailController.text.trim(),
+          'city': citycontroller.text.trim(),
+          'state': statecontroller.text.trim(),
+          'pincode': picontroller.text.trim(),
+          'age': agecontroller.text.trim(),
+          'gender': genderController.text.trim(),
+          'phone': phoneController.text.trim(),
+        },
+      );
+      print(response.data);
     } catch (e) {
       print(e);
     }
@@ -103,9 +104,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
@@ -139,14 +138,21 @@ class _ProfileManagementState extends State<ProfileManagement> {
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
-            decoration:
-                const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
             child: IconButton(
               icon: Icon(
                 isEditing ? Icons.check : Icons.edit,
                 color: const Color.fromARGB(250, 218, 98, 17),
               ),
-              onPressed: () {
+              onPressed: () async {
+                if (isEditing) {
+                  // Tick pressed → Save changes
+                  await updateProfileApi();
+                }
+
                 setState(() {
                   isEditing = !isEditing;
                 });
@@ -171,7 +177,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
                   gradient: LinearGradient(
                     colors: [
                       const Color.fromARGB(250, 218, 98, 17),
-                      Colors.orange.shade300
+                      Colors.orange.shade300,
                     ],
                   ),
                   borderRadius: BorderRadius.circular(24),
@@ -191,8 +197,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border:
-                                Border.all(color: Colors.white, width: 3),
+                            border: Border.all(color: Colors.white, width: 3),
                           ),
                           child: CircleAvatar(
                             radius: 45,
@@ -203,14 +208,12 @@ class _ProfileManagementState extends State<ProfileManagement> {
                             child: _profileImage == null
                                 ? Text(
                                     nameController.text.isNotEmpty
-                                        ? nameController.text[0]
-                                            .toUpperCase()
+                                        ? nameController.text[0].toUpperCase()
                                         : '',
                                     style: const TextStyle(
                                       fontSize: 36,
                                       fontWeight: FontWeight.bold,
-                                      color:
-                                          Color.fromARGB(250, 218, 98, 17),
+                                      color: Color.fromARGB(250, 218, 98, 17),
                                     ),
                                   )
                                 : null,
@@ -230,8 +233,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
                                 ),
                                 child: const Icon(
                                   Icons.camera_alt,
-                                  color:
-                                      Color.fromARGB(250, 218, 98, 17),
+                                  color: Color.fromARGB(250, 218, 98, 17),
                                   size: 20,
                                 ),
                               ),
@@ -244,7 +246,9 @@ class _ProfileManagementState extends State<ProfileManagement> {
                         ? Container(
                             width: 200,
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 4),
+                              horizontal: 10,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white24,
                               borderRadius: BorderRadius.circular(10),
@@ -273,19 +277,22 @@ class _ProfileManagementState extends State<ProfileManagement> {
 
               const SizedBox(height: 30),
 
-              _profileTile(Icons.email_outlined, 'Email',
-                  emailController,
-                  isReadOnly: true),
-              _profileTile(Icons.phone_outlined, 'Phone',
-                  phoneController),
-              _profileTile(Icons.person_outline_rounded, 'Gender',
-                  genderController),
-                  _profileTile(Icons.numbers, 'Pincode', picontroller),
-                  _profileTile(Icons.numbers, 'city', citycontroller),
-                  _profileTile(Icons.numbers, 'state', statecontroller),
-                  _profileTile(Icons.numbers, 'age', agecontroller),
-
-                  
+              _profileTile(
+                Icons.email_outlined,
+                'Email',
+                emailController,
+                isReadOnly: true,
+              ),
+              _profileTile(Icons.phone_outlined, 'Phone', phoneController),
+              _profileTile(
+                Icons.person_outline_rounded,
+                'Gender',
+                genderController,
+              ),
+              _profileTile(Icons.numbers, 'Pincode', picontroller),
+              _profileTile(Icons.numbers, 'city', citycontroller),
+              _profileTile(Icons.numbers, 'state', statecontroller),
+              _profileTile(Icons.numbers, 'age', agecontroller),
 
               const SizedBox(height: 30),
 
@@ -295,18 +302,23 @@ class _ProfileManagementState extends State<ProfileManagement> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color.fromARGB(250, 218, 98, 17),
+                      backgroundColor: const Color.fromARGB(250, 218, 98, 17),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
                     ),
-                    onPressed: () {
+                    // onPressed: () {
+                    //   setState(() {
+                    //     updateProfileApi();
+                    //     isEditing = false;
+                    //   });
+
+                    // },
+                    onPressed: () async {
+                      await updateProfileApi();
                       setState(() {
-                        updateProfileApi();
                         isEditing = false;
                       });
-
                     },
                     child: const Text(
                       'Save Changes',
@@ -348,17 +360,14 @@ class _ProfileManagementState extends State<ProfileManagement> {
         ],
       ),
       child: ListTile(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         leading: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color:
-                const Color.fromARGB(250, 218, 98, 17).withOpacity(0.1),
+            color: const Color.fromARGB(250, 218, 98, 17).withOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon,
-              color: const Color.fromARGB(250, 218, 98, 17)),
+          child: Icon(icon, color: const Color.fromARGB(250, 218, 98, 17)),
         ),
         title: Text(
           label,
@@ -371,16 +380,16 @@ class _ProfileManagementState extends State<ProfileManagement> {
         subtitle: (isEditing && !isReadOnly)
             ? TextField(
                 controller: controller,
-                decoration:
-                    const InputDecoration(border: InputBorder.none),
+                decoration: const InputDecoration(border: InputBorder.none),
               )
             : Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
                   controller.text,
                   style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
       ),
@@ -398,9 +407,7 @@ class _ProfileManagementState extends State<ProfileManagement> {
         color: Colors.white,
       ),
       cursorColor: Colors.white,
-      decoration: const InputDecoration(
-        border: InputBorder.none,
-      ),
+      decoration: const InputDecoration(border: InputBorder.none),
     );
   }
 }

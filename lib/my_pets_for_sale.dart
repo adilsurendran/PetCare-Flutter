@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
 import 'package:petcareapp/my_pet_requests_page.dart';
-import 'package:petcareapp/register.dart';
 import 'add_pet_for_sale.dart';
 import 'edit_pet_for_sale.dart';
 

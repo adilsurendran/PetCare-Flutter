@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
-import 'package:petcareapp/register.dart';
 
 import 'pet_manager.dart';
 

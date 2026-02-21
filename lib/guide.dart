@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:petcareapp/api_config.dart';
-import 'package:petcareapp/register.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GuidePage extends StatefulWidget {

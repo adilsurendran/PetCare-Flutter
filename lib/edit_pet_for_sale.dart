@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:petcareapp/api_config.dart';
-import 'package:petcareapp/register.dart';
 
 class EditPetForSale extends StatefulWidget {
   final Map pet;

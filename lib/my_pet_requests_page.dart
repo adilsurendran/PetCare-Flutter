@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
-import 'package:petcareapp/register.dart';
 
 class MyPetRequestsPage extends StatefulWidget {
   const MyPetRequestsPage({super.key});

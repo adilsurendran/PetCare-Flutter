@@ -66,7 +66,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/login.dart';
-import 'package:petcareapp/register.dart';
 import 'community_models.dart';
 
 class CommunityAccountTab extends StatefulWidget {

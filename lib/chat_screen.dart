@@ -218,7 +218,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcareapp/api_config.dart';
 import 'package:petcareapp/details/doctor_detail_page.dart';
-import 'package:petcareapp/register.dart';
 import 'package:petcareapp/service_manager.dart';
 import 'package:petcareapp/user_profile_page.dart';
 import 'login.dart'; // contains dio, baseUrl, usrid
